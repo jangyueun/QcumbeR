@@ -8,6 +8,11 @@ import android.widget.EditText
 import android.widget.TextView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import androidx.core.content.res.ResourcesCompat
+import android.text.Html
 
 class LoginActivity : AppCompatActivity() {
 
@@ -38,6 +43,32 @@ class LoginActivity : AppCompatActivity() {
         passwordEditText = findViewById(R.id.passwordEditText)
         loginButton = findViewById(R.id.loginButton)
         signupText = findViewById(R.id.signupText)
+
+        // 로고 투톤 색상 적용
+        val logoTextView = findViewById<TextView>(R.id.appTitle)
+        val logoText = "QcumbeR"
+        val spannableString = SpannableString(logoText)
+
+        logoTextView.typeface = ResourcesCompat.getFont(this, R.font.quantico_bold)
+
+        spannableString.setSpan(
+            ForegroundColorSpan(getColor(R.color.dark_green)),
+            0, 1,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+        spannableString.setSpan(
+            ForegroundColorSpan(getColor(R.color.dark_green)),
+            6, 7,
+            Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+        )
+
+        logoTextView.text = spannableString
+
+        // 회원가입 밑줄 추가
+        signupText.text = Html.fromHtml(
+            "계정이 없으신가요? <u>회원가입</u>",
+            Html.FROM_HTML_MODE_LEGACY
+        )
 
         // 로그인 버튼 클릭 리스너
         loginButton.setOnClickListener {
