@@ -29,11 +29,12 @@ import android.text.SpannableString
 import android.text.style.ForegroundColorSpan
 import android.widget.TextView
 import androidx.core.content.res.ResourcesCompat
+import android.widget.ImageButton
 
 class CameraFragment : Fragment() {
 
     private lateinit var previewView: PreviewView
-    private lateinit var captureButton: Button
+    private lateinit var captureButton: ImageButton
     private lateinit var cameraExecutor: ExecutorService
     private var imageCapture: ImageCapture? = null
 
